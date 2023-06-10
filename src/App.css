@@ -218,6 +218,9 @@ filter: drop-shadow(1px 0px 3px white) invert(1);
   font-size: 0.7vw;
   width: 7vw;
 }
+.noteBtn div{
+  display: flex;
+}
 
 .noteBtn button:nth-child(2){
   background: #8a3030;
@@ -492,6 +495,7 @@ cursor: pointer;
   flex-direction: column;
   background: black;
   color: grey;
+  font-size: 3vw;
 }
 .loading{
   width: 40vw;
