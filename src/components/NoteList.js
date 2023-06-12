@@ -1,10 +1,9 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import { myContext } from "../App";
 import loadingGif from "../Images/load.gif"
 const NoteList = () => {
-
     const { loading, workList, personalList, setNoteOpen, otherList, setNoteText, currentNoteGroup, setTitleText, setNoteFromWhichGroup } = useContext(myContext);
-
+    
     const noteclick = (title, content, noteid, list) => {
         setTitleText(title)
         setNoteText(content)
@@ -12,11 +11,11 @@ const NoteList = () => {
         setNoteFromWhichGroup(list)
     }
     return loading === true ? (<div className="loadDiv"><img src={loadingGif} className="loading"></img>loading ...</div>) : (<div className="noteList">
-        {currentNoteGroup === "workList" ? workList.map((item) => (<div className="stickyNotes" key={item.id} onClick={() => noteclick(item.title, item.content, item.id, "work")}><div>{item.title}</div><div>{item.content}</div></div>)) : null}
+        {currentNoteGroup === "workList" ? workList.map((item,index) => (<div className="stickyNotes" key={item.id} onClick={() => noteclick(item.title, item.content, item.id, "work")}><div className="miniNoteHead">{item.title}</div><div className="miniNoteBody" dangerouslySetInnerHTML={{__html: item.content}}></div></div>)) : null}
 
-        {currentNoteGroup === "personalList" ? personalList.map((item) => (<div className="stickyNotes" onClick={() => noteclick(item.title, item.content, item.id, "personal")}><div>{item.title}</div><div>{item.content}</div></div>)) : null}
+        {currentNoteGroup === "personalList" ? personalList.map((item) => (<div className="stickyNotes" onClick={() => noteclick(item.title, item.content, item.id, "personal")}><div className="miniNoteHead">{item.title}</div><div className="miniNoteBody" dangerouslySetInnerHTML={{__html: item.content}}></div></div>)) : null}
 
-        {currentNoteGroup === "otherList" ? otherList.map((item) => (<div className="stickyNotes" onClick={() => noteclick(item.title, item.content, item.id, "other")}><div>{item.title}</div><div>{item.content}</div></div>)) : null}
+        {currentNoteGroup === "otherList" ? otherList.map((item) => (<div className="stickyNotes" onClick={() => noteclick(item.title, item.content, item.id, "other")}><div className="miniNoteHead">{item.title}</div><div className="miniNoteBody" dangerouslySetInnerHTML={{__html: item.content}}></div></div>)) : null}
     </div>)
 }
 

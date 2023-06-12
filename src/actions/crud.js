@@ -1,10 +1,19 @@
 import { update, ref, child, set , remove} from "firebase/database";
 import { db } from "../firebaseConfig/firebaseConfig";
+
+
+const contentModify=(content)=>{
+   content = content.replaceAll("<div>","<br />");
+   content = content.replaceAll("</div>","");
+   return content;
+}
+
 export const updateFunction = (uid, id, title, content, type, setWorkList, setPersonalList, setOtherList, workList, personalList, otherList) => {
+ var modifyContent = contentModify(content)
    set(child(ref(db), "USER/" + uid + "/" + id), {
       id: id,
       title: title,
-      content: content,
+      content: modifyContent,
       type: type
    })
       .then(() => {
@@ -12,11 +21,11 @@ export const updateFunction = (uid, id, title, content, type, setWorkList, setPe
 
 if (type==="work"){
    if(workList.filter((element)=>{return element.id===id})<1){
-      workList.push({ id: id, content: content, title: title, type: type }); 
+      workList.push({ id: id, content: modifyContent, title: title, type: type }); 
       setWorkList([...workList]);
    }else{
       workList.forEach(element => {
-         if(element.id === id){ element.content = content; element.title = title; element.type = type; }
+         if(element.id === id){ element.content = modifyContent; element.title = title; element.type = type; }
       });
       setWorkList([...workList]);
    }
@@ -29,11 +38,11 @@ if (type==="work"){
 
 if (type==="personal"){
    if(personalList.filter((element)=>{return element.id===id})<1){
-      personalList.push({ id: id, content: content, title: title, type: type }); 
+      personalList.push({ id: id, content: modifyContent, title: title, type: type }); 
       setPersonalList([...personalList]);
    }else{
       personalList.forEach(element => {
-         if(element.id === id){ element.content = content; element.title = title; element.type = type; }
+         if(element.id === id){ element.content = modifyContent; element.title = title; element.type = type; }
       });
       setPersonalList([...personalList]);
    }
@@ -46,11 +55,11 @@ if (type==="personal"){
 
 if (type==="other"){
    if(otherList.filter((element)=>{return element.id===id})<1){
-      otherList.push({ id: id, content: content, title: title, type: type }); 
+      otherList.push({ id: id, content: modifyContent, title: title, type: type }); 
       setOtherList([...otherList]);
    }else{
       otherList.forEach(element => {
-         if(element.id === id){ element.content = content; element.title = title; element.type = type; }
+         if(element.id === id){ element.content = modifyContent; element.title = title; element.type = type; }
       });
       setOtherList([...otherList]);
    }
@@ -67,22 +76,23 @@ if (type==="other"){
 export const save = (uid, title, content, type, setNoteOpen, setWorkList, setPersonalList, setOtherList, workList, personalList, otherList) => {
    var id = new Date().getTime().toString();
    const updates = {};
+  var modifyContent = contentModify(content)
    updates["USER/" + uid + "/" + id] =
    {
       id: id,
       title: title,
-      content: content,
+      content: modifyContent,
       type: type
    }
 
    update(ref(db), updates).then(() => {
       setNoteOpen({ status: true, type: "old", id: id })
       if (type === "work") {
-         setWorkList([{ id: id, content: content, title: title, type: type }, ...workList])
+         setWorkList([{ id: id, content: modifyContent, title: title, type: type }, ...workList])
       } else if (type === "personal") {
-         setPersonalList([{ id: id, content: content, title: title, type: type }, ...personalList])
+         setPersonalList([{ id: id, content: modifyContent, title: title, type: type }, ...personalList])
       } else {
-         setOtherList([{ id: id, content: content, title: title, type: type }, ...otherList])
+         setOtherList([{ id: id, content: modifyContent, title: title, type: type }, ...otherList])
       }
    })
 }
