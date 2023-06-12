@@ -50,8 +50,8 @@ const Notepad = (props) => {
             </div>
         </div>
         <div className="noteBox">
-            <div className="titleBox" contentEditable='true' data-placeholder="Title" id="title" onKeyUp={(e) => { setTitle(e.target.textContent) }}>{noteOpen.type === "old"?props.title:"Title"}</div><br></br>
-            <div className="notePaper" contentEditable='true' data-placeholder="Your Note" id="note" onKeyUp={(e) => { setContent(e.target.textContent) }}>{noteOpen.type === "old"?props.content:"Note"}</div>
+            <div className="titleBox" contentEditable='true' data-placeholder="Title" id="title" onKeyUp={(e) => { setTitle(e.target.innerHTML) }}>{noteOpen.type === "old"?props.title:"Title"}</div><br></br>
+            <div className="notePaper" contentEditable='true' data-placeholder="Your Note" id="note" onKeyUp={(e) => { setContent(e.target.innerHTML) }}>{noteOpen.type === "old"?props.content:"Note"}</div>
         </div>
     </div>
 
