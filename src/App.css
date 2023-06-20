@@ -180,6 +180,7 @@ filter: drop-shadow(1px 0px 3px white) invert(1);
   min-height: 80%;
   overflow: hidden;
   justify-content: flex-end;
+  width: 92vw;
 }
 .workContainer{
   width: 82%;
@@ -220,6 +221,8 @@ filter: drop-shadow(1px 0px 3px white) invert(1);
 }
 .noteBtn div{
   display: flex;
+  gap: 1vw;
+  align-items: center;
 }
 
 .noteBtn button:nth-child(2){
@@ -349,6 +352,76 @@ cursor: pointer;
 .loading{
   width: 15vw;
 }
+
+.richDiv{
+  width: 10vw;
+  align-items: center;
+  font-size: 0.9vw;
+  justify-content: space-evenly;
+  gap: 1vw;
+  border: 1px solid antiquewhite;
+  background: #090909;
+  color: #e0a537;
+}
+.richDiv i{
+  font-size: 1vw;
+  padding: 0.3vw;
+  border-radius: 0.3vw;
+  filter: drop-shadow(2px 4px 6px rgb(117, 117, 43));
+}
+.fi-rr-text-size{
+  color: white;
+  font-size: 1vw;
+  margin-top: 0.2vw;
+  margin-left: 2vw;
+  filter: drop-shadow(0px 0px 10px orange);
+}
+.linkBoxDiv{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+  background: #ecf4faad;
+  backdrop-filter: blur(5px);
+  color: black;
+  padding: 1vw 2vw;
+  border-radius: 1vw;
+  box-shadow: 1px 2px 5px #989494;
+  border: 1px solid #a1c4ca;
+  left: 40vw;
+  top: 30vh;
+}
+.linkBoxDiv p{
+  margin-bottom: 0;
+    font-weight: bolder;
+    color: wheat;
+    filter: drop-shadow(2px 4px 6px grey);
+    font-size: 1.02vw;
+}
+.linkBoxDiv div{
+  width: 12vw;
+  height: 2vw;
+  padding: 1vw;
+  background: #ffffffbf;
+  overflow: hidden;
+  word-break: break-all;
+  font-size: 0.8vw;
+  overflow-y: scroll;
+  border-radius: 0.7vw;
+}
+.linkBoxDiv div:focus{
+  outline: none;
+}
+
+
+
+
+
+
+
+
+
+
 @media screen and (max-width: 500px) {
 .logo{scale:0.8}
 .addNote{
@@ -480,8 +553,8 @@ cursor: pointer;
   padding: 2vw;
 }
 .notePaper{
-  max-height: 110vw;
-  min-height: 110vw;
+  max-height: 51vh;
+  min-height: 51vh;
   font-size: 4vw;
   padding: 2vw;
 }
@@ -519,5 +592,62 @@ cursor: pointer;
 }
 .loading{
   width: 40vw;
+}
+.richDiv{
+  font-size: 0.9vw;
+  justify-content: space-evenly;
+  border: 1px solid antiquewhite;
+  background: #090909;
+  color: #e0a537;
+  position: fixed;
+  bottom: 0;
+  left: 0vw;
+  width: 100%;
+
+}
+.richDiv i{
+  font-size: 3.4vw;
+  padding: 0.25vw;
+  border-radius: 0.3vw;
+  filter: drop-shadow(2px 4px 6px rgb(117, 117, 43));
+}
+.fi-rr-text-size{
+  font-size: 4vw;
+  display: flex;
+  margin: 0 3vw;
+  align-items: center;
+  padding: 2vw;
+  height: 7vw;
+}
+.richShowDiv{
+  width: 90%;
+    display: flex;
+    justify-content: space-around;
+}
+.linkBoxDiv{
+  display: flex;
+  position: fixed;
+  top: 40vh;
+  left: 15vw;
+  padding: 2vw 5vw;
+}
+.linkBoxDiv p{
+  font-size: 5vw;
+  color: #2e2727;
+}
+.linkBoxDiv div{
+  width: 58vw;
+  height: 17vh;
+  font-size: 3.5vw;
+  align-items: flex-start;
+}
+.linkBoxDiv span{
+  width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2vw;
+}
+.noteDiv{
+  width: 96vw;
 }
 }
